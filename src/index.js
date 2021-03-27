@@ -8,6 +8,8 @@ import closePopups from './modules/closePopups';
 import faq from './modules/faq';
 import hintsDesktop from './modules/hintsDesktop';
 import hintsMobile from './modules/hintsMobile';
+import dynamicSlider from './modules/dynamicSlider';
+import staticSlider from './modules/staticSlider';
 import swapInterior from './modules/swapInterior';
 
 closePopups();
@@ -20,4 +22,6 @@ consultations();
 faq();
 hintsDesktop();
 hintsMobile();
+dynamicSlider();
+staticSlider();
 swapInterior();

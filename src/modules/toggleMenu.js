@@ -1,4 +1,3 @@
-'use strict';
 const toggleMenu = () => {
     const popupMenu = document.querySelector('.popup-menu'),
         popupDialogMenu = popupMenu.querySelector('.popup-dialog-menu'),

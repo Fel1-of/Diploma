@@ -1,4 +1,3 @@
-'use strict';
 const allServicesPopup = () => {
     const openPopup = () => {
         const servicesButton = [...document.querySelectorAll('.link-list')];
@@ -17,7 +16,12 @@ const allServicesPopup = () => {
 
         buttonsWrapper.addEventListener('click', event => {
             const target = event.target;
-
+            if(!target.matches('.nav-list-popup-repair')) {
+                for( const i of buttonList){
+                    i.style.background =  '';
+                }
+                target.style.background =  '#AFACA4'; }
+                
             if (target.closest('.popup-repair-types-nav__item')) {
                 const clickedButton = target.closest('.popup-repair-types-nav__item');
                 const blockTitle = document.querySelector('.popup-repair-types-content__head-title');
@@ -95,7 +99,6 @@ const allServicesPopup = () => {
 
     const setData = data => {
         const date = data[0].date.split('.');
-        console.log(data);
         const formatDate = [date[0], getMonth(date[1]), date[2]].join(' ');
         const serviceData = data.slice(1, 7);
 

@@ -1,4 +1,3 @@
-'use strict';
 import animation from './animation';
 
 const hintsDesktop = () => {

@@ -1,4 +1,3 @@
-'use strict';
 const faq = () => {
     const accordion = document.querySelector('.accordion');
     accordion.addEventListener('click', event => {

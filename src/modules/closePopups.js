@@ -1,4 +1,3 @@
-'use strict';
 const closePopups = () => {
     const allCloseButtons = [...document.querySelectorAll('.close')];
     allCloseButtons.forEach(button => {

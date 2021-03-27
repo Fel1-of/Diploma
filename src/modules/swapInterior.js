@@ -1,4 +1,3 @@
-'use strict';
 const swapInterior = () => {
     const designsWrapper = document.querySelector('.designs');
     

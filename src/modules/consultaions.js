@@ -1,4 +1,3 @@
-'use strict';
 const consultations = () => {
     const consultButtons = [...document.querySelectorAll('.button')].filter(item => 
         item.textContent === 'Проконсультироваться');

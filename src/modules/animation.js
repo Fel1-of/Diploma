@@ -1,4 +1,3 @@
-'use strict';
 function animate({ timing, draw, duration }) {
 
     const start = performance.now();
