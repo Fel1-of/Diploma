@@ -31,6 +31,8 @@ const toggleMenu = () => {
     popupMenu.addEventListener('click', event => {
         const target = event.target;
 
+        if(target.classList.contains('popup')) closeMenu();
+
         if (servicesButton.some(item => item.contains(target))) {
             popupMenuToggler();
         } else if (target.matches('.menu-link')) {
@@ -55,10 +57,11 @@ const toggleMenu = () => {
         const hrefItem = document.querySelector(innerLink.getAttribute('href'));
 
         event.preventDefault();
-        hrefItem.scrollIntoView({
+        window.scrollTo({
+            top: 0,
+            left: 0,
             behavior: 'smooth',
-            block: 'nearest'
-        });
+          });
     }); 
 };
 
