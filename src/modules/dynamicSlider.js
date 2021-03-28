@@ -189,6 +189,7 @@ const dynamicSlider = () => {
                 } else if (arrow.matches('#transparency_left')) {
                     switchSlider(false, true);
                 }
+                console.log(target);
             }
         });
 

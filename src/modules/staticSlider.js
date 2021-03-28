@@ -28,6 +28,7 @@ const staticSlider = () => {
     
             if (this.next && this.prev) this.controlSlider();
             else {
+                this.addArrow();
                 this.controlSlider();
             }
             if (this.responsive) {
@@ -69,6 +70,18 @@ const staticSlider = () => {
             `;
     
             document.head.appendChild(style);
+        }
+
+        addArrow(){
+            this.prev = document.createElement('button');
+            this.next = document.createElement('button');
+
+            this.prev.className = 'slider-arrow_left';
+            this.next.className = 'slider-arrow_right';
+            this.prev.classList.add('slider-arrow');
+            this.next.classList.add('slider-arrow');
+            this.main.appendChild(this.prev);
+            this.main.appendChild(this.next);
         }
 
         hideSlider() {
@@ -453,6 +466,28 @@ const staticSlider = () => {
     });
 
     portfolio.init();
+
+    if(document.documentElement.clientWidth < 1025){
+        const services = new SliderCarousel({
+            main: '.services-slider-wrap',
+            wrap: '.services-slider',
+            slidesToShow: 2,
+            hideButtons: true,
+            responsive: [{
+                breakpoint: 900,
+                slidesToShow: 2,
+                multiplyBy: 1
+   
+            },
+            {
+                breakpoint: 576,
+                slidesToShow: 1,
+                multiplyBy: 0.8
+            }
+            ]
+        })
+        services.init();
+    }
 
     navListRepair.init();
     navListRepairPopup.init();

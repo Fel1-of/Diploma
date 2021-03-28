@@ -30,7 +30,7 @@ const toggleMenu = () => {
 
     popupMenu.addEventListener('click', event => {
         const target = event.target;
-
+ 
         if(target.classList.contains('popup')) closeMenu();
 
         if (servicesButton.some(item => item.contains(target))) {
@@ -48,8 +48,8 @@ const toggleMenu = () => {
         }
     });
 
-    menuButton.forEach(btn => btn.addEventListener('click', () => {
-        popupMenuToggler();
+    menuButton.forEach(btn => btn.addEventListener('click', (e) => {
+        if(!e.target.parentElement.parentElement.classList.contains('menu-phone-icon')) popupMenuToggler();
     }));
 
     footerUpButton.addEventListener('click', event => {
