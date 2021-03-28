@@ -1872,7 +1872,8 @@ div.wave-block:nth-child(17):after {
   position: relative;
   padding: 250px 0;
   background: url(../images/decor/big_round_decor.svg) 100% 100% no-repeat;
-  background-position: center 0; }
+  background-position: center 0;
+  z-index: 4; }
   @media (max-width: 1024px) {
     .problems {
       padding: 0 0 35px;
@@ -2114,7 +2115,7 @@ div.wave-block:nth-child(17):after {
       line-height: 25px;
       font-size: 19px;
       text-align: left;
-      z-index: 1;
+      z-index: 3;
       -webkit-transform: translate3d(0, -5px, 0);
       transform: translate3d(0, -5px, 0);
       opacity: 0.5; }
@@ -2130,21 +2131,16 @@ div.wave-block:nth-child(17):after {
           font-size: 12px;
           top: 190px; } }
       @media (max-width: 1024px) {
-        .problems-item-popup:before {
-          -webkit-transform: rotate(180deg);
-          transform: rotate(180deg); } }
       @media (max-width: 575px) {
         .problems-item-popup:before {
-          max-width: 290px;
-          -webkit-transform: rotate(0deg);
-          transform: rotate(0deg); } }
+          max-width: 290px; } }
       .problems-item-popup-1 {
         min-height: 344px;
         padding-top: 35px;
-        top: 245px; }
+        /* top: 245px; } */
         @media (min-width: 1025px) {
           .problems-item-popup-1 {
-            top: 140px; } }
+            /* top: 140px; } } */
         @media (max-width: 575px) {
           .problems-item-popup-1 {
             top: 190px; } }
@@ -2157,15 +2153,12 @@ div.wave-block:nth-child(17):after {
           content: '';
           background: url("../images/problems/popup_bg_1.svg") no-repeat;
           background-size: contain;
-          -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
           z-index: -1; }
           @media (max-width: 575px) {
             .problems-item-popup-1:before {
               background: url("../images/problems/popup_bg_mobile.svg") no-repeat;
               background-size: contain;
-              -webkit-transform: rotate(360deg);
-              transform: rotate(360deg); } }
+               } }
       .problems-item-popup-2 {
         min-height: 304px; }
         @media (max-width: 575px) {
@@ -2211,7 +2204,10 @@ div.wave-block:nth-child(17):after {
           background: url("../images/problems/popup_bg_2.svg") no-repeat;
           z-index: -1; }
           @media (max-width: 575px) {
+            .problems-item-popup-4 {
+              height: 100px; }
             .problems-item-popup-4:before {
+              height: 100px;
               background: url("../images/problems/popup_bg_mobile.svg") no-repeat;
               background-size: contain; } }
       .problems-item-popup__title {

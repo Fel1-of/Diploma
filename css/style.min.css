@@ -2916,12 +2916,12 @@ div.wave-block:nth-child(17):after {
 .problems-item-popup-1 {
     min-height: 344px;
     padding-top: 35px;
-    top: 245px
+    /* top: 245px */
 }
 
 @media (min-width:1025px) {
     .problems-item-popup-1 {
-        top: 140px
+        /* top: 140px */
     }
 }
 
@@ -2933,8 +2933,6 @@ div.wave-block:nth-child(17):after {
     height: 100%;
     content: '';
     background: url(../images/problems/popup_bg_1.svg) 0 0/contain no-repeat;
-    -webkit-transform: rotate(180deg);
-    transform: rotate(180deg);
     z-index: -1
 }
 
@@ -2949,8 +2947,6 @@ div.wave-block:nth-child(17):after {
 
     .problems-item-popup-1:before {
         background: url(../images/problems/popup_bg_mobile.svg) 0 0/contain no-repeat;
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg)
     }
 
     .problems-item-popup-2 {
