@@ -2553,7 +2553,8 @@ div.wave-block:nth-child(17):after {
 .problems {
     position: relative;
     padding: 250px 0;
-    background: url(../images/decor/big_round_decor.svg) center 0 no-repeat
+    background: url(../images/decor/big_round_decor.svg) center 0 no-repeat;
+    z-index: 4;
 }
 
 .problems .wrapper_middle {
