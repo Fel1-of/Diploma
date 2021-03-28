@@ -503,7 +503,7 @@ const staticSlider = () => {
     });
 
     portfolio.init();
-
+    
     if(document.documentElement.clientWidth < 576){
         const services = new SliderCarousel({
             main: '.services-slider',
