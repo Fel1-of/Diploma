@@ -282,18 +282,18 @@ const dynamicSlider = () => {
                     
                     if (index === curIndex) {
                         item.style.display = 'block';
+
                     } else {
                         item.style.display = 'none';
+
                     }
                 });
             popupTransparency.querySelector('.slider-counter-content__current').textContent = curIndex+1;
             popupTransparency.addEventListener('click', e => {
                 if(e.target.classList.contains('popup-transparency')) {
                     [...popupTransparency.querySelectorAll('.popup-transparency-slider__slide')].forEach(i=>{
-                        [...i.children].forEach(ind=>{
-                            ind.classList.remove('slider-active');
-                            ind.classList.remove('slider-disabled');
-                        })
+                        i.classList.remove('slider-active');
+                        i.classList.remove('slider-disabled');
                     })
                 }
 
