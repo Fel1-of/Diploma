@@ -3,7 +3,7 @@ import animation from './animation';
 const staticSlider = () => {
     class SliderCarousel {
         constructor({ main, wrap, next, prev, position = 0, slidesToShow = 3, infinity = false, responsive = [], 
-            hide = false, hideButtons = false, divideBy = 1, multiplyBy = 1 }) {
+            hide = false, hideButtons = false, divideBy = 1, multiplyBy = 1, hidden = 0, hideover=0}) {
             this.main = document.querySelector(main);
             this.wrap = document.querySelector(wrap);
             this.slides = document.querySelector(wrap).children;
@@ -11,6 +11,8 @@ const staticSlider = () => {
             this.prev = document.querySelector(prev);
             this.slidesToShow = slidesToShow;
             this.responsive = responsive;
+            this.hidden = hidden;
+            this.hideover = hideover;
             this.options = {
                 position,
                 divideBy,
@@ -50,8 +52,8 @@ const staticSlider = () => {
                 style = document.createElement('style');
                 style.id = 'sliderCarousel-style';
             }
-            
-            style.textContent = `
+            if(!this.hideover){
+                style.textContent = `
                 .glo-slider {
                     overflow: hidden !important;
                 }
@@ -68,6 +70,25 @@ const staticSlider = () => {
                     margin: auto 0 !important;
                 }
             `;
+            } else{
+                style.textContent = `
+                .glo-slider {
+                }
+                .glo-slider__wrap {
+                    display: flex !important;
+                    flex-wrap: nowrap !important;
+                    transition: transform 0.5s !important;
+                    will-change: transform !important;
+                    overflow: visible !important;
+                }
+    
+                .glo-slider__item {
+                    flex: 0 0 ${this.options.widthSlide}% !important;
+                    margin: auto 0 !important;
+                }
+            `;
+            }
+            
     
             document.head.appendChild(style);
         }
@@ -75,7 +96,8 @@ const staticSlider = () => {
         addArrow(){
             this.prev = document.createElement('button');
             this.next = document.createElement('button');
-
+            this.prev.textContent = '<';
+            this.next.textContent = '>';
             this.prev.className = 'slider-arrow_left';
             this.next.className = 'slider-arrow_right';
             this.prev.classList.add('slider-arrow');
@@ -134,10 +156,14 @@ const staticSlider = () => {
                     this.options.position = this.slides.length - this.slidesToShow;
                     this.hideSlider();
                 }
-
-                this.wrap.style.transform = 
-                `translateX(-${((this.options.position * this.options.widthSlide) / this.options.divideBy) * 
-                    this.options.multiplyBy}%)`;
+                if(this.hidden){
+                    this.wrap.style.transform = 
+                    `translateX(-${((this.options.position * this.hidden * this.options.widthSlide) / this.options.divideBy) * 
+                        this.options.multiplyBy}%)`;
+                } else {
+                    this.wrap.style.transform = 
+                    `translateX(-${((this.options.position * this.options.widthSlide) / this.options.divideBy) * 
+                        this.options.multiplyBy}%)`;}
             }
         }
     
@@ -152,10 +178,16 @@ const staticSlider = () => {
                     this.options.position = 0;
                     this.hideSlider();
                 }
-
-                this.wrap.style.transform = 
+                if(this.hidden){
+                    this.wrap.style.transform = 
+                `translateX(-${((this.options.position * this.hidden  * this.options.widthSlide) / this.options.divideBy) * 
+                    this.options.multiplyBy}%)`;
+                } else{
+                    this.wrap.style.transform = 
                 `translateX(-${((this.options.position * this.options.widthSlide) / this.options.divideBy) * 
                     this.options.multiplyBy}%)`;
+                }
+                
             }
         }
     
@@ -295,15 +327,19 @@ const staticSlider = () => {
             {
                 breakpoint: 900,
                 slidesToShow: 2,
-                multiplyBy: 1
+                multiplyBy: 1,
+                hidden: 1.2,
    
             },
             {
                 breakpoint: 576,
                 slidesToShow: 1,
-                multiplyBy: 0.8
+                multiplyBy: 0.8,
+                hidden: 1.2,
             }
-            ]
+            ],
+            hidden: 1.2,
+            
         }
     );
 
@@ -341,7 +377,8 @@ const staticSlider = () => {
                 breakpoint: 576,
                 slidesToShow: 1,
                 multiplyBy: 2.5
-            }]
+            }],
+            hidden: 1.1,
         }
     );
 
@@ -467,24 +504,15 @@ const staticSlider = () => {
 
     portfolio.init();
 
-    if(document.documentElement.clientWidth < 1025){
+    if(document.documentElement.clientWidth < 576){
         const services = new SliderCarousel({
-            main: '.services-slider-wrap',
-            wrap: '.services-slider',
-            slidesToShow: 2,
+            main: '.services-slider',
+            wrap: '.services-slider-wrap',
+            slidesToShow: 1,
             hideButtons: true,
-            responsive: [{
-                breakpoint: 900,
-                slidesToShow: 2,
-                multiplyBy: 1
-   
-            },
-            {
-                breakpoint: 576,
-                slidesToShow: 1,
-                multiplyBy: 0.8
-            }
-            ]
+            hidden: 1,
+            hideover: 1
+            
         })
         services.init();
     }

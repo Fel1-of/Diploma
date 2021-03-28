@@ -189,7 +189,6 @@ const dynamicSlider = () => {
                 } else if (arrow.matches('#transparency_left')) {
                     switchSlider(false, true);
                 }
-                console.log(target);
             }
         });
 
@@ -276,15 +275,25 @@ const dynamicSlider = () => {
                     curIndex = index;
                 }
             });
-
             [...popupTransparency.querySelectorAll('.popup-transparency-slider__slide')]
                 .forEach((item, index) => {
+                    
                     if (index === curIndex) {
                         item.style.display = 'block';
                     } else {
                         item.style.display = 'none';
                     }
                 });
+                popupTransparency.addEventListener('click', e => {
+                    if(e.target.classList.contains('popup-transparency')) {
+                        [...popupTransparency.querySelectorAll('.popup-transparency-slider__slide')].forEach(i=>{
+                            [...i.children].forEach(ind=>{
+                                ind.classList.remove('slider-active');
+                                ind.classList.remove('slider-disabled');
+                            })
+                        })
+                    }
+                })
         }
     });
 };

@@ -133,10 +133,28 @@ const hintsMobile = () => {
         setTimeout(() => popup.style.visibility = 'hidden', 350);
     };
 
-    const problemsItems = document.querySelectorAll('.problems-item__icon');
-    problemsItems.forEach(item => {
-        item.addEventListener('mouseenter', event => over(event, '.problems-item'));
-        item.addEventListener('mouseleave', event => out(event, '.problems-item'));
+    // const problemsItems = document.querySelectorAll('.problems-item__icon');
+    // problemsItems.forEach(item => {
+    //     item.addEventListener('mouseenter', event => over(event, '.problems-item'));
+    //     item.addEventListener('mouseleave', event => out(event, '.problems-item'));
+    // });
+    const problemsSlider = document.querySelector('.problems-slider');
+    const problemsItems = document.querySelector('.problems-slider').children;
+    problemsItems[0].classList.add('active-item');
+    problemsSlider.addEventListener('transitionend', ()=>{
+        for(const i of problemsItems) {
+            i.classList.remove('active-item');}
+        let pos = Math.ceil(`${problemsSlider.style.transform}`.replace(/[^.\d]/g, ''));
+        if(pos==0){
+            problemsItems[0].classList.add('active-item');
+        } else if(pos==92){
+            problemsItems[1].classList.add('active-item');
+        } else if(pos==184){
+            problemsItems[2].classList.add('active-item');
+        } else if(pos==275){
+            problemsItems[3].classList.add('active-item');
+        }
+
     });
 
 };
