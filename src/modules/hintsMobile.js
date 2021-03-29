@@ -140,20 +140,20 @@ const hintsMobile = () => {
     // });
     const problemsSlider = document.querySelector('.problems-slider');
     const problemsItems = document.querySelector('.problems-slider').children;
-    problemsItems[0].classList.add('active-item');
+    let count = 0;
+    let pos1 = 0;
+    problemsItems[count].classList.add('active-item');
     problemsSlider.addEventListener('transitionend', ()=>{
         for(const i of problemsItems) {
             i.classList.remove('active-item');}
         let pos = Math.ceil(`${problemsSlider.style.transform}`.replace(/[^.\d]/g, ''));
-        if(pos==0){
-            problemsItems[0].classList.add('active-item');
-        } else if(pos==92){
-            problemsItems[1].classList.add('active-item');
-        } else if(pos==184){
-            problemsItems[2].classList.add('active-item');
-        } else if(pos==275){
-            problemsItems[3].classList.add('active-item');
-        }
+        if(pos<pos1){
+            count--;
+            pos1=pos;
+        } else if(pos>pos1) {count++;
+            pos1=pos;}
+        problemsItems[count].classList.add('active-item');
+        
 
     });
 
