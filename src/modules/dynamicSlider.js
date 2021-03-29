@@ -76,7 +76,6 @@ const dynamicSlider = () => {
             let slider;
             if (elem === '.popup-transparency') {slider = main.querySelector('.popup-transparency-slider');} 
             else {slider = findSlider();}
-            console.log(slider);
             let current;
             let previous;
             let sliderLength;

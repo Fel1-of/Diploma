@@ -180,8 +180,9 @@ const staticSlider = () => {
                 }
                 if(this.hidden){
                     this.wrap.style.transform = 
-                `translateX(-${((this.options.position * this.hidden  * this.options.widthSlide) / this.options.divideBy) * 
+                `translateX(-${((this.options.position * this.hidden * this.options.widthSlide) / this.options.divideBy) * 
                     this.options.multiplyBy}%)`;
+                    console.log(this.wrap.style.transform);
                 } else{
                     this.wrap.style.transform = 
                 `translateX(-${((this.options.position * this.options.widthSlide) / this.options.divideBy) * 
@@ -190,10 +191,9 @@ const staticSlider = () => {
                 
             }
         }
-    
         controlSlider() {
-            this.next.addEventListener('click', () => this.nextSlider());
-            this.prev.addEventListener('click', () => this.prevSlider());
+            this.next.addEventListener('click', this.nextSlider.bind(this));
+            this.prev.addEventListener('click', this.prevSlider.bind(this));
         }
         
         responseInit() {
@@ -503,20 +503,30 @@ const staticSlider = () => {
     });
 
     portfolio.init();
-    
+    const services = new SliderCarousel({
+        position: 0,
+        main: '.services-slider',
+        wrap: '.services-slider-wrap',
+        slidesToShow: 1,
+        hideButtons: true,
+        hidden: 1,
+        hideover: 1
+        
+    })
+    let flag1=0;
     if(document.documentElement.clientWidth < 576){
-        const services = new SliderCarousel({
-            main: '.services-slider',
-            wrap: '.services-slider-wrap',
-            slidesToShow: 1,
-            hideButtons: true,
-            hidden: 1,
-            hideover: 1
-            
-        })
         services.init();
+        flag1 = 1;
     }
-
+    window.addEventListener('resize', ()=>{
+        if(document.documentElement.clientWidth < 576){
+            if(!flag1){
+                services.init();
+                flag1 = 1;
+            }
+            
+        }
+    })
     navListRepair.init();
     navListRepairPopup.init();
 
