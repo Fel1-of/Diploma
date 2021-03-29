@@ -182,7 +182,6 @@ const staticSlider = () => {
                     this.wrap.style.transform = 
                 `translateX(-${((this.options.position * this.hidden * this.options.widthSlide) / this.options.divideBy) * 
                     this.options.multiplyBy}%)`;
-                    console.log(this.wrap.style.transform);
                 } else{
                     this.wrap.style.transform = 
                 `translateX(-${((this.options.position * this.options.widthSlide) / this.options.divideBy) * 
