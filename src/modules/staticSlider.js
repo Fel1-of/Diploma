@@ -508,7 +508,7 @@ const staticSlider = () => {
         wrap: '.services-slider-wrap',
         slidesToShow: 1,
         hideButtons: true,
-        hidden: 1,
+
         hideover: 1
         
     })
